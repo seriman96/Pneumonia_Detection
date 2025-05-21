@@ -1,0 +1,69 @@
+image_data=f"data:image/png;base64,{encoded_image}" 
+some detail about data:image/png
+
+The data:image/png;base64 format is part of the Data URI scheme, 
+which allows embedding data directly within HTML or CSS without 
+needing external files. This is often used for embedding images, 
+fonts, or other binary data directly into web pages.
+
+Detailed Breakdown of data:image/png;base64
+
+.data:
+Indicates that the content is a data URI rather than a traditional 
+URL pointing to a file.
+
+.image/png
+Specifies the MIME type of the content.
+In this case, image/png denotes the content is a PNG image.
+Other MIME types include:
+image/jpeg for JPEG images
+image/gif for GIF images
+text/html for HTML files, and more.
+
+.base64
+Indicates that the data is encoded in Base64 format.
+Base64 encoding converts binary data into an ASCII string format, 
+making it safe to include in text-based formats like HTML or JSON.
+
+.{encoded_image}
+Represents the actual Base64-encoded string of the binary image data.
+This part contains the encoded representation of the image file.
+
+Example
+Here’s a simple example of a Data URI for a small red dot image:
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4
+//8/w38GIAXDIBKE0DHxgljNBAAO9TXL
+0Y4OHwAAAABJRU5ErkJggg==" alt="Red Dot">
+
+The src attribute directly embeds the image as Base64.
+Browsers decode this and render the image as if it were an external resource.
+
+Advantages of data:image/png;base64
+
+.No External File Dependency:
+Useful for embedding small images like icons in web pages without hosting them externally.
+Inline Loading:
+The browser doesn’t need to make an additional HTTP request to fetch the resource.
+
+.Security:
+Since the data is embedded in the document, it’s less prone to external tampering.
+
+.Portability:
+Entire assets (HTML + image) can be contained in a single file.
+
+Disadvantages
+
+.Larger File Size:
+Base64 encoding increases the size of the original binary data by approximately 33%.
+
+.Memory Usage:
+The browser may use more memory when handling large Base64-encoded data URIs.
+
+.Caching:
+Unlike external files, Base64 data cannot be cached separately, meaning repeated use 
+of the same image may increase overall page size.
+
+
+
+

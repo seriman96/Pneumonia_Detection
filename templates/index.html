@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection</title>
+    <style>
+        body {
+            background-color: #202020;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        .upload-section {
+            margin-top: 50px;
+        }
+        input[type="file"] {
+            margin: 20px auto;
+            display: block;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    {% if prediction %}
+        <h1 style="color: white;">Classification from Chest X-Ray</h1>
+    {% else %}
+        <h1 style="color: red;">Welcome to Gondwana.com</h1>
+        <h2>Deep Learning model for Pneumonia Detection and Classification from Chest X-Ray</h2>
+    {% endif %}
+    <div class="upload-section">
+        <p>Please Upload an X-ray Image</p>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="xray_image" accept="image/*" required>
+            <button type="submit">Predict</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if prediction %}
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+        {% if image_data %}
+            <img src="{{ image_data }}" alt="Uploaded X-ray">
+        {% endif %}
+    </div>
+</body>
+</html>

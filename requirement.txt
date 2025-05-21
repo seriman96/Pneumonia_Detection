@@ -1,0 +1,7 @@
+python==3.7
+PIL
+tensorflow==2.8.0
+flask
+base64
+scikit-learn
+numpy
